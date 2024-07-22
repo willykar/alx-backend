@@ -18,7 +18,6 @@ def index_range(page: int, page_size: int) -> tuple:
     end_index = start_index + page_size
     return (start_index, end_index)
 
-
 class Server:
     """Server class to paginate a database of popular baby names."""
     DATA_FILE = "Popular_Baby_Names.csv"
@@ -32,20 +31,17 @@ class Server:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
-            self.__dataset = dataset[1:]
+            self.__dataset = dataset[1:]  # Skip header
 
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Returns a list of rows from the dataset for the given
-        page and page size.
+        Returns a list of rows from the dataset for the given page and page size.
         """
-        
-        assert isinstance(page, int) and page > 0,
-        "page must be a positive integer"
-        assert isinstance(page_size, int) and page_size > 0,
-        "page_size must be a positive integer"
+        # Check that page and page_size are integers greater than 0
+        assert isinstance(page, int) and page > 0, "page must be a positive integer"
+        assert isinstance(page_size, int) and page_size > 0, "page_size must be a positive integer"
 
         # Get the dataset
         dataset = self.dataset()
