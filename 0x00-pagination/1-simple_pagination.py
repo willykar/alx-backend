@@ -41,9 +41,11 @@ class Server:
         Returns a list of rows from the dataset for the given
         page and page size.
         """
-
+        
         assert isinstance(page, int) and page > 0,
+        "page must be a positive integer"
         assert isinstance(page_size, int) and page_size > 0,
+        "page_size must be a positive integer"
 
         # Get the dataset
         dataset = self.dataset()
