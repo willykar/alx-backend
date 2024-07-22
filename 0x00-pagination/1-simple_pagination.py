@@ -32,13 +32,14 @@ class Server:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
-            self.__dataset = dataset[1:]  # Skip header
+            self.__dataset = dataset[1:]
 
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Returns a list of rows from the dataset for the given page and page size.
+        Returns a list of rows from the dataset for the given
+        page and page size.
         """
         # Check that page and page_size are integers greater than 0
         assert isinstance(page, int) and page > 0, "page must be a positive integer"
