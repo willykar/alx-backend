@@ -37,7 +37,8 @@ class LFUCache(BaseCaching):
             self.cache_data[key] = item
 
     def get(self, key):
-        """ A method get that returns the value associated with the given key """
+        """ A method get that returns the value associated
+        with the given key """
         if self.cache_data.get(key):
             self.lfu[key] += 1
             if self.queue.index(key) + 1 != len(self.queue):
